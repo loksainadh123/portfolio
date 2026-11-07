@@ -98,6 +98,35 @@
   }
   if (!reduced) setInterval(() => { wi = (wi + 1) % words.length; scrambleTo(words[wi]); }, 2800);
 
+  /* ---------- ID badge: spring-physics swing driven by the cursor ---------- */
+  const badge = hero.querySelector(".badge");
+  if (badge && !reduced) {
+    let angle = 0, vel = 0, push = 0, lastMX = null, badgeOn = true;
+    hero.addEventListener("mousemove", (e) => {
+      if (lastMX !== null) {
+        const r = badge.getBoundingClientRect();
+        // movement near the badge pushes it harder
+        const near = Math.max(0, 1 - Math.hypot(e.clientX - (r.left + r.width / 2), e.clientY - (r.top + r.height / 2)) / 420);
+        push += (e.clientX - lastMX) * (0.04 + near * 0.22);
+      }
+      lastMX = e.clientX;
+    });
+    hero.addEventListener("mouseleave", () => { lastMX = null; });
+    new IntersectionObserver(([e]) => { badgeOn = e.isIntersecting; }).observe(badge);
+    const t1 = performance.now();
+    (function swing(now) {
+      if (badgeOn && innerWidth > 1024) {
+        const idle = Math.sin((now - t1) / 1400) * 0.6;          // gentle breathing sway
+        const acc = -0.045 * (angle - idle) - 0.09 * vel + push * 0.05;
+        push *= 0.6;
+        vel += acc; angle += vel;
+        angle = Math.max(-14, Math.min(14, angle));
+        badge.style.setProperty("--swing", `${angle.toFixed(3)}deg`);
+      }
+      requestAnimationFrame(swing);
+    })(t1);
+  }
+
   /* ---------- streaming build log ---------- */
   const log = hero.querySelector(".logwin__body");
   const LINES = [

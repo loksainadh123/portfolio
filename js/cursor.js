@@ -10,7 +10,7 @@
   const emoji = cursor.querySelector(".cursor__emoji");
   root.classList.add("has-cursor");
 
-  const INTERACTIVE = "a, button, summary, input, textarea, [draggable='true'], .phone, .copy, label";
+  const INTERACTIVE = "a, button, summary, input, textarea, [draggable='true'], .phone, .copy, label, .badge";
   const DARK = ".band--dark, .logwin, .dag, .term, .btn--dark, .pill, .scramble, .kanban__gen";
 
   let x = innerWidth / 2, y = innerHeight / 2;
