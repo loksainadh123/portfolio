@@ -1,536 +1,455 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="no-js">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lok Sainadh Kesana - UX/UI Designer</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-            line-height: 1.6;
-            color: #2d3748;
-            background: #f7fafc;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        /* Header */
-        header {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 80px 0;
-            text-align: center;
-        }
-
-        header h1 {
-            font-size: 3rem;
-            margin-bottom: 10px;
-            font-weight: 700;
-        }
-
-        header p {
-            font-size: 1.3rem;
-            opacity: 0.95;
-            margin-bottom: 30px;
-        }
-
-        .contact-links {
-            display: flex;
-            gap: 20px;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-
-        .contact-links a {
-            color: white;
-            text-decoration: none;
-            padding: 10px 20px;
-            background: rgba(255,255,255,0.2);
-            border-radius: 25px;
-            transition: all 0.3s;
-            backdrop-filter: blur(10px);
-        }
-
-        .contact-links a:hover {
-            background: rgba(255,255,255,0.3);
-            transform: translateY(-2px);
-        }
-
-        /* About Section */
-        .about {
-            padding: 60px 0;
-            background: white;
-        }
-
-        .about h2 {
-            font-size: 2.5rem;
-            margin-bottom: 20px;
-            text-align: center;
-            color: #1a202c;
-        }
-
-        .about p {
-            font-size: 1.1rem;
-            max-width: 800px;
-            margin: 0 auto 20px;
-            text-align: center;
-            color: #4a5568;
-        }
-
-        /* Skills Section */
-        .skills {
-            padding: 60px 0;
-            background: #f7fafc;
-        }
-
-        .skills h2 {
-            font-size: 2.5rem;
-            margin-bottom: 40px;
-            text-align: center;
-            color: #1a202c;
-        }
-
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
-        }
-
-        .skill-category {
-            background: white;
-            padding: 25px;
-            border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.07);
-        }
-
-        .skill-category h3 {
-            color: #667eea;
-            margin-bottom: 15px;
-            font-size: 1.3rem;
-        }
-
-        .skill-category ul {
-            list-style: none;
-        }
-
-        .skill-category li {
-            padding: 5px 0;
-            color: #4a5568;
-        }
-
-        /* Projects Section */
-        .projects {
-            padding: 60px 0;
-            background: white;
-        }
-
-        .projects h2 {
-            font-size: 2.5rem;
-            margin-bottom: 50px;
-            text-align: center;
-            color: #1a202c;
-        }
-
-        .project-card {
-            background: #f7fafc;
-            border-radius: 15px;
-            overflow: hidden;
-            margin-bottom: 50px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            transition: transform 0.3s;
-        }
-
-        .project-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
-        }
-
-        .project-header {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 40px;
-        }
-
-        .project-header h3 {
-            font-size: 2rem;
-            margin-bottom: 10px;
-        }
-
-        .project-header .subtitle {
-            font-size: 1.1rem;
-            opacity: 0.9;
-        }
-
-        .project-content {
-            padding: 40px;
-        }
-
-        .project-meta {
-            display: flex;
-            gap: 30px;
-            margin-bottom: 30px;
-            flex-wrap: wrap;
-        }
-
-        .meta-item {
-            flex: 1;
-            min-width: 200px;
-        }
-
-        .meta-item strong {
-            display: block;
-            color: #667eea;
-            margin-bottom: 5px;
-            font-size: 0.9rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .section-title {
-            font-size: 1.3rem;
-            color: #1a202c;
-            margin: 30px 0 15px;
-            padding-bottom: 10px;
-            border-bottom: 2px solid #667eea;
-        }
-
-        .project-content ul {
-            margin-left: 20px;
-            color: #4a5568;
-        }
-
-        .project-content li {
-            margin-bottom: 10px;
-        }
-
-        .tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            margin-top: 20px;
-        }
-
-        .tag {
-            background: #667eea;
-            color: white;
-            padding: 8px 15px;
-            border-radius: 20px;
-            font-size: 0.85rem;
-        }
-
-        /* Image Placeholder */
-        .project-images {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-            margin: 30px 0;
-        }
-
-        .image-placeholder {
-            aspect-ratio: 16/10;
-            background: linear-gradient(135deg, #e0e7ff 0%, #f3e8ff 100%);
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #667eea;
-            font-size: 0.9rem;
-            text-align: center;
-            padding: 20px;
-            border: 2px dashed #cbd5e0;
-        }
-
-        /* Footer */
-        footer {
-            background: #1a202c;
-            color: white;
-            text-align: center;
-            padding: 40px 0;
-        }
-
-        footer p {
-            opacity: 0.8;
-        }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-            header h1 {
-                font-size: 2rem;
-            }
-
-            header p {
-                font-size: 1.1rem;
-            }
-
-            .about h2, .skills h2, .projects h2 {
-                font-size: 2rem;
-            }
-
-            .project-header h3 {
-                font-size: 1.5rem;
-            }
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lok Sainadh Kesana — Software Engineer</title>
+  <meta name="description" content="Lok Sainadh Kesana — Software Engineer building full-stack products, data pipelines and fast web apps. MS Information Systems @ Northeastern University, graduating Dec 2026." />
+  <meta name="theme-color" content="#0a0a0a" />
+  <meta property="og:title" content="Lok Sainadh Kesana — Software Engineer" />
+  <meta property="og:description" content="Full-stack products, data pipelines and fast web apps. Open to full-time Software, Data and Web Engineering roles." />
+  <meta property="og:type" content="website" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>👾</text></svg>" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300..800&family=Geist+Mono:wght@400..600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+  <script>document.documentElement.classList.remove("no-js");</script>
 </head>
 <body>
-    <header>
-        <div class="container">
-            <h1>Lok Sainadh Kesana</h1>
-            <p>UX/UI Designer | User Research Enthusiast | Problem Solver</p>
-            <div class="contact-links">
-                <a href="mailto:kesanaloksainadh@gmail.com">✉️ Email</a>
-                <a href="https://www.linkedin.com/in/lok-sainadh-kesana-842210277/" target="_blank">💼 LinkedIn</a>
-                <a href="tel:8573811827">📱 857-381-1827</a>
-            </div>
-        </div>
-    </header>
+  <a class="skip" href="#work">Skip to work</a>
 
-    <section class="about">
-        <div class="container">
-            <h2>About Me</h2>
-            <p>I'm a passionate UX/UI designer currently pursuing my Master's in Information Systems at Northeastern University. With a strong foundation in user research, wireframing, and prototyping, I create user-centered digital experiences that solve real problems.</p>
-            <p>My design philosophy centers on balancing user needs, business goals, and technical feasibility. I believe in iterative design, data-driven decisions, and advocating for users throughout the product development process.</p>
+  <!-- 👾 custom cursor (enabled by JS on mouse devices only) -->
+  <div class="cursor" aria-hidden="true"><span class="cursor__emoji">👾</span></div>
+
+  <!-- ================= NAV ================= -->
+  <header class="nav" id="top">
+    <a class="nav__logo" href="#top" aria-label="Back to top"><span class="mono">&lt;lok</span><span class="blink">_</span><span class="mono">/&gt;</span></a>
+    <nav class="nav__links" aria-label="Primary">
+      <a href="#work"><span class="mono dim">01</span> work</a>
+      <a href="#journey"><span class="mono dim">02</span> journey</a>
+      <a href="#stack"><span class="mono dim">03</span> stack</a>
+      <a href="#shell"><span class="mono dim">04</span> shell</a>
+      <a href="#contact"><span class="mono dim">05</span> contact</a>
+    </nav>
+    <div class="nav__right">
+      <span class="status"><i class="status__dot"></i><span class="status__text">open to work</span></span>
+      <a class="btn btn--dark btn--sm" href="assets/Lok_Sainadh_Kesana_Resume.pdf" target="_blank" rel="noopener">Resume <span aria-hidden="true">↗</span></a>
+    </div>
+  </header>
+
+  <main>
+    <!-- ================= HERO ================= -->
+    <section class="hero" aria-label="Introduction">
+      <canvas class="hero__grid" aria-hidden="true"></canvas>
+      <div class="wrap hero__inner">
+        <p class="hero__prompt mono"><span class="dim">~/boston</span> <span class="accent-ink">$</span> <span class="type" data-type="whoami"></span><span class="caret"></span></p>
+
+        <h1 class="hero__name">
+          <span class="hero__line"><span class="reveal-up">Lok Sainadh</span></span>
+          <span class="hero__line"><span class="reveal-up hero__outline" style="--d:.12s">Kesana</span><span class="hero__badge reveal-up" style="--d:.3s">👾</span></span>
+        </h1>
+
+        <div class="hero__row">
+          <div class="hero__copy">
+            <p class="hero__role">
+              <strong>Software Engineer</strong> who builds
+              <span class="scramble" data-words="full-stack products|data pipelines|fast web apps|AI-powered tools|things that ship">full-stack products</span>
+            </p>
+            <p class="hero__sub">
+              I turn messy requirements into working software, from a careers platform handling 500+ applications a month
+              to an Airflow pipeline that checks every one of 42,000+ rows. MS in Information Systems at Northeastern.
+            </p>
+            <ul class="hero__meta mono">
+              <li><span class="dim">loc</span> Boston, MA</li>
+              <li><span class="dim">gpa</span> 3.78 / 4.0</li>
+              <li><span class="dim">grad</span> Dec 2026</li>
+              <li><span class="dim">seeking</span> SWE · Data · Web, full-time</li>
+            </ul>
+            <div class="hero__cta">
+              <a class="btn btn--dark" href="#work">See the work <span aria-hidden="true">↓</span></a>
+              <button class="btn btn--ghost copy" data-copy="kesanaloksainadh@gmail.com" type="button">
+                <span class="copy__label">kesanaloksainadh@gmail.com</span><span class="copy__icon mono" aria-hidden="true">⧉</span>
+              </button>
+            </div>
+          </div>
+
+          <figure class="logwin" aria-label="Animated build log">
+            <div class="win__bar"><i></i><i></i><i></i><span class="mono">lok.pipeline — run #2026</span></div>
+            <ol class="logwin__body mono" aria-live="off"></ol>
+          </figure>
         </div>
+      </div>
+
+      <div class="marquee" aria-hidden="true">
+        <div class="marquee__track mono">
+          <span>Java</span><b>✦</b><span>Python</span><b>✦</b><span>TypeScript</span><b>✦</b><span>React</span><b>✦</b><span>Next.js</span><b>✦</b><span>Node.js</span><b>✦</b><span>FastAPI</span><b>✦</b><span>SQL</span><b>✦</b><span>Apache Airflow</span><b>✦</b><span>Docker</span><b>✦</b><span>AWS S3</span><b>✦</b><span>Prisma</span><b>✦</b><span>MongoDB</span><b>✦</b><span>Claude API</span><b>✦</b>
+          <span>Java</span><b>✦</b><span>Python</span><b>✦</b><span>TypeScript</span><b>✦</b><span>React</span><b>✦</b><span>Next.js</span><b>✦</b><span>Node.js</span><b>✦</b><span>FastAPI</span><b>✦</b><span>SQL</span><b>✦</b><span>Apache Airflow</span><b>✦</b><span>Docker</span><b>✦</b><span>AWS S3</span><b>✦</b><span>Prisma</span><b>✦</b><span>MongoDB</span><b>✦</b><span>Claude API</span><b>✦</b>
+        </div>
+      </div>
     </section>
 
-    <section class="skills">
-        <div class="container">
-            <h2>Skills & Tools</h2>
-            <div class="skills-grid">
-                <div class="skill-category">
-                    <h3>🎨 Design Tools</h3>
-                    <ul>
-                        <li>Figma (Advanced)</li>
-                        <li>Moqups</li>
-                        <li>Balsamiq</li>
-                        <li>Adobe XD</li>
-                        <li>Sketch</li>
-                    </ul>
-                </div>
-                <div class="skill-category">
-                    <h3>🔍 UX Skills</h3>
-                    <ul>
-                        <li>User Research</li>
-                        <li>Wireframing & Prototyping</li>
-                        <li>Interaction Design</li>
-                        <li>Usability Testing</li>
-                        <li>Design Systems</li>
-                    </ul>
-                </div>
-                <div class="skill-category">
-                    <h3>💻 Development</h3>
-                    <ul>
-                        <li>HTML, CSS, JavaScript</li>
-                        <li>React</li>
-                        <li>Responsive Design</li>
-                        <li>Bootstrap</li>
-                        <li>Git</li>
-                    </ul>
-                </div>
-                <div class="skill-category">
-                    <h3>📊 Analytics</h3>
-                    <ul>
-                        <li>Power BI</li>
-                        <li>Excel & VBA</li>
-                        <li>Tableau</li>
-                        <li>SQL</li>
-                        <li>Data Visualization</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
+    <!-- ================= NUMBERS ================= -->
+    <section class="band band--dark numbers" aria-label="By the numbers">
+      <div class="wrap numbers__grid">
+        <div class="stat reveal"><span class="stat__n" data-count="500" data-suffix="+">0</span><span class="stat__l mono">applications / month through a careers product I built</span></div>
+        <div class="stat reveal"><span class="stat__n" data-count="42000" data-suffix="+">0</span><span class="stat__l mono">market-data rows validated by my pipeline</span></div>
+        <div class="stat reveal"><span class="stat__n" data-count="7">0</span><span class="stat__l mono">automated data-quality checks per run</span></div>
+        <div class="stat reveal"><span class="stat__n" data-count="0" data-fixed="0">0</span><span class="stat__l mono">duplicate rows across repeat runs</span></div>
+      </div>
     </section>
 
-    <section class="projects">
-        <div class="container">
-            <h2>Featured Projects</h2>
+    <!-- ================= WORK ================= -->
+    <section class="section" id="work">
+      <div class="wrap">
+        <header class="sec-head reveal">
+          <p class="sec-head__idx mono">01 — selected work</p>
+          <h2 class="sec-head__title">Things I've built.<br /><span class="dim">Click around, they move.</span></h2>
+        </header>
 
-            <!-- KAYAK Project -->
-            <div class="project-card">
-                <div class="project-header">
-                    <h3>KAYAK Travel Booking Platform</h3>
-                    <p class="subtitle">Comprehensive UX Design for Multi-Service Travel Platform</p>
-                </div>
-                <div class="project-content">
-                    <div class="project-meta">
-                        <div class="meta-item">
-                            <strong>Role</strong>
-                            <p>UX/UI Designer (Team Project)</p>
-                        </div>
-                        <div class="meta-item">
-                            <strong>Duration</strong>
-                            <p>3 Months</p>
-                        </div>
-                        <div class="meta-item">
-                            <strong>Platform</strong>
-                            <p>Mobile (iPhone Optimized)</p>
-                        </div>
-                    </div>
-
-                    <h4 class="section-title">🎯 Project Overview</h4>
-                    <p>Designed an end-to-end user experience for a comprehensive travel booking platform covering flights, hotels, car rentals, and vacation packages. Created 99 pixel-perfect, iPhone-optimized screens with a focus on seamless multi-service booking experiences.</p>
-
-                    <div class="project-images">
-                        <img src="kayak1.png" alt="KAYAK Home Screen" style="width:100%; border-radius:10px; box-shadow: 0 4px 10px rgba(0,0,0,0.1);">
-                        <img src="kayak2.png" alt="KAYAK Booking Flow" style="width:100%; border-radius:10px; box-shadow: 0 4px 10px rgba(0,0,0,0.1);">
-                        <img src="kayak3.png" alt="KAYAK Trip Management" style="width:100%; border-radius:10px; box-shadow: 0 4px 10px rgba(0,0,0,0.1);">
-                    </div>
-
-                    <h4 class="section-title">🔍 Research & Problem Statement</h4>
-                    <p>Travelers struggle with fragmented booking experiences across multiple platforms. Users need a unified solution that simplifies multi-service travel planning while maintaining flexibility and control.</p>
-
-                    <h4 class="section-title">💡 Design Process</h4>
-                    <ul>
-                        <li><strong>User Research:</strong> Conducted competitive analysis of existing travel platforms and identified key pain points in multi-service booking workflows</li>
-                        <li><strong>User Flows:</strong> Mapped comprehensive user journeys for onboarding, authentication, search, booking, payment, and trip management</li>
-                        <li><strong>Design System:</strong> Developed scalable component library with reusable UI elements ensuring consistency across 99 screens</li>
-                        <li><strong>Prototyping:</strong> Created high-fidelity interactive prototypes in Figma and Moqups for user testing and stakeholder feedback</li>
-                    </ul>
-
-                    <h4 class="section-title">✨ Key Features Designed</h4>
-                    <ul>
-                        <li>AI-powered travel suggestions based on user preferences and booking history</li>
-                        <li>Multi-city booking capability with complex itinerary management</li>
-                        <li>Interactive maps for hotel and destination exploration</li>
-                        <li>Real-time notifications for price changes, booking confirmations, and trip updates</li>
-                        <li>Seamless payment flow with multiple payment options and saved methods</li>
-                        <li>Comprehensive trip management dashboard</li>
-                    </ul>
-
-                    <h4 class="section-title">🎨 Design Decisions</h4>
-                    <ul>
-                        <li>Implemented progressive disclosure to prevent information overload during search and booking</li>
-                        <li>Used consistent visual hierarchy to guide users through complex multi-step processes</li>
-                        <li>Designed with accessibility in mind, ensuring WCAG compliance for inclusive user experience</li>
-                        <li>Created modular components for efficient design iteration and developer handoff</li>
-                    </ul>
-
-                    <h4 class="section-title">📈 Impact & Outcomes</h4>
-                    <ul>
-                        <li>Successfully designed 99 pixel-perfect screens covering complete user journey</li>
-                        <li>Created scalable design system with 50+ reusable components</li>
-                        <li>Reduced booking flow complexity through intuitive UX patterns</li>
-                        <li>Delivered comprehensive design documentation for development team</li>
-                    </ul>
-
-                    <div class="tags">
-                        <span class="tag">User Research</span>
-                        <span class="tag">Wireframing</span>
-                        <span class="tag">Figma</span>
-                        <span class="tag">Prototyping</span>
-                        <span class="tag">Design Systems</span>
-                        <span class="tag">Mobile-First</span>
-                        <span class="tag">User Flows</span>
-                    </div>
-                </div>
+        <!-- Project: Pipeline -->
+        <article class="project reveal">
+          <div class="project__text">
+            <p class="project__kicker mono"><span class="pill pill--live"><i></i>live</span> full-stack · solo · deployed</p>
+            <h3 class="project__title">Pipeline<span class="dim"> — AI job application tracker</span></h3>
+            <p class="project__lede">Job hunting is chaos across tabs and spreadsheets. Pipeline is a Kanban board for applications that remembers where everything is, and turns a pasted job post into a complete application kit.</p>
+            <ul class="project__points">
+              <li>Built a <b>Kanban board</b> with drag-and-drop stage changes (dnd-kit), saved with <b>Prisma + SQLite</b>.</li>
+              <li><b>Claude API</b> generates <b>4 resources</b> from a job URL or description: cover letter, resume bullets, interview questions and a company brief.</li>
+              <li>API credentials stay <b>server-side only</b>. The responsive UI is built with Tailwind CSS.</li>
+            </ul>
+            <ul class="chips mono" aria-label="Tech used">
+              <li>Next.js</li><li>TypeScript</li><li>Node.js</li><li>Prisma</li><li>SQLite</li><li>Claude API</li><li>dnd-kit</li><li>Tailwind</li>
+            </ul>
+            <div class="project__links">
+              <a class="btn btn--dark" href="https://job-portfolio-sigma.vercel.app/" target="_blank" rel="noopener">Live demo <span aria-hidden="true">↗</span></a>
+              <a class="btn btn--ghost" href="https://github.com/loksainadh123/Job_portfolio" target="_blank" rel="noopener">Source code <span aria-hidden="true">↗</span></a>
             </div>
+          </div>
 
-            <!-- ServeEase Project -->
-            <div class="project-card">
-                <div class="project-header">
-                    <h3>ServeEase - On-Demand Home Services</h3>
-                    <p class="subtitle">Mobile-First Platform Connecting Users with Service Providers</p>
+          <div class="project__demo">
+            <div class="win kanban" aria-label="Interactive Kanban preview">
+              <div class="win__bar"><i></i><i></i><i></i><span class="mono">pipeline.app/board</span></div>
+              <div class="kanban__board">
+                <div class="kanban__col" data-col="saved">
+                  <p class="kanban__head mono">Saved <span class="kanban__count">2</span></p>
+                  <div class="kanban__card" draggable="true" tabindex="0"><b>Backend Engineer</b><span class="mono">Stripe · Remote</span></div>
+                  <div class="kanban__card" draggable="true" tabindex="0"><b>Data Engineer I</b><span class="mono">Wayfair · Boston</span></div>
                 </div>
-                <div class="project-content">
-                    <div class="project-meta">
-                        <div class="meta-item">
-                            <strong>Role</strong>
-                            <p>UX/UI Designer (Collaborative)</p>
-                        </div>
-                        <div class="meta-item">
-                            <strong>Duration</strong>
-                            <p>2.5 Months</p>
-                        </div>
-                        <div class="meta-item">
-                            <strong>Platform</strong>
-                            <p>Mobile (iOS & Android)</p>
-                        </div>
-                    </div>
-
-                    <h4 class="section-title">🎯 Project Overview</h4>
-                    <p>Co-designed a comprehensive on-demand home services platform with 70+ interactive screens supporting dual user journeys for both customers and service providers. Focused on creating seamless booking experiences with real-time tracking and communication.</p>
-
-                    <div class="project-images">
-                        <img src="serveease1.png" alt="ServeEase Service Selection" style="width:100%; border-radius:10px; box-shadow: 0 4px 10px rgba(0,0,0,0.1);">
-                        <img src="serveease2.png" alt="ServeEase Live Tracking" style="width:100%; border-radius:10px; box-shadow: 0 4px 10px rgba(0,0,0,0.1);">
-                        <img src="serveease3.png" alt="ServeEase Provider Dashboard" style="width:100%; border-radius:10px; box-shadow: 0 4px 10px rgba(0,0,0,0.1);">
-                    </div>
-
-                    <h4 class="section-title">🔍 Research & Problem Statement</h4>
-                    <p>Traditional home service booking requires phone calls, lacks transparency, and offers no real-time updates. Users need a modern solution for instant booking, live tracking, and direct communication with service providers.</p>
-
-                    <h4 class="section-title">💡 Design Process</h4>
-                    <ul>
-                        <li><strong>User Personas:</strong> Created detailed personas for both customers and service providers to understand diverse needs and pain points</li>
-                        <li><strong>Low-Fidelity Wireframes:</strong> Rapidly iterated on concepts using Moqups for quick stakeholder feedback</li>
-                        <li><strong>High-Fidelity Prototypes:</strong> Developed polished, interactive prototypes in Figma for user testing</li>
-                        <li><strong>Design Handoff:</strong> Created comprehensive design specifications and component documentation for developers</li>
-                    </ul>
-
-                    <h4 class="section-title">✨ Key Features Designed</h4>
-                    <ul>
-                        <li>Real-time booking system with instant provider matching</li>
-                        <li>Live GPS tracking of service provider location and ETA</li>
-                        <li>Flexible rescheduling with real-time availability updates</li>
-                        <li>In-app chat for seamless customer-provider communication</li>
-                        <li>Digital invoicing and multiple payment options</li>
-                        <li>Multi-step checkout with service customization</li>
-                        <li>Service provider dashboard with earnings analytics, scheduling, and booking management</li>
-                    </ul>
-
-                    <h4 class="section-title">🎨 Design Decisions</h4>
-                    <ul>
-                        <li>Mobile-first approach optimized for on-the-go booking and management</li>
-                        <li>Clear visual distinction between customer and provider interfaces while maintaining brand consistency</li>
-                        <li>Implemented real-time status indicators to reduce user anxiety about service progress</li>
-                        <li>Designed intuitive navigation patterns for quick access to frequently used features</li>
-                    </ul>
-
-                    <h4 class="section-title">🎯 User-Centered Approach</h4>
-                    <ul>
-                        <li>Conducted competitive analysis of platforms like TaskRabbit and Handy</li>
-                        <li>Balanced customer convenience with provider workflow efficiency</li>
-                        <li>Designed transparent pricing and rating systems to build trust</li>
-                        <li>Created accessibility-focused interfaces for users of all technical skill levels</li>
-                    </ul>
-
-                    <h4 class="section-title">📈 Impact & Outcomes</h4>
-                    <ul>
-                        <li>Delivered 70+ high-fidelity screens covering complete dual-user experience</li>
-                        <li>Created efficient booking flow reducing steps by 40% compared to competitors</li>
-                        <li>Designed comprehensive provider dashboard improving business management capabilities</li>
-                        <li>Produced developer-ready design system for seamless implementation</li>
-                    </ul>
-
-                    <div class="tags">
-                        <span class="tag">Mobile Design</span>
-                        <span class="tag">User Personas</span>
-                        <span class="tag">Figma</span>
-                        <span class="tag">Wireframing</span>
-                        <span class="tag">Dual-User Interface</span>
-                        <span class="tag">Real-Time Features</span>
-                        <span class="tag">Dashboard Design</span>
-                    </div>
+                <div class="kanban__col" data-col="applied">
+                  <p class="kanban__head mono">Applied <span class="kanban__count">2</span></p>
+                  <div class="kanban__card" draggable="true" tabindex="0"><b>Software Engineer</b><span class="mono">HubSpot · Cambridge</span></div>
+                  <div class="kanban__card" draggable="true" tabindex="0"><b>Full-Stack Dev</b><span class="mono">Toast · Boston</span></div>
                 </div>
+                <div class="kanban__col" data-col="interview">
+                  <p class="kanban__head mono">Interview <span class="kanban__count">1</span></p>
+                  <div class="kanban__card is-hot" draggable="true" tabindex="0"><b>Web Developer</b><span class="mono">Klaviyo · Boston</span></div>
+                </div>
+              </div>
+              <div class="kanban__ai">
+                <button class="kanban__gen mono" type="button">✦ generate application kit</button>
+                <ul class="kanban__kit mono">
+                  <li>cover_letter.md</li><li>resume_bullets.md</li><li>interview_qs.md</li><li>company_brief.md</li>
+                </ul>
+              </div>
             </div>
+            <p class="hint mono">↔ drag cards between columns · click ✦ to generate</p>
+          </div>
+        </article>
+
+        <!-- Project: Stock ETL -->
+        <article class="project project--flip reveal">
+          <div class="project__text">
+            <p class="project__kicker mono"><span class="pill">data eng</span> team project · ETL · forecasting</p>
+            <h3 class="project__title">Stock Market ETL<span class="dim"> &amp; forecasting pipeline</span></h3>
+            <p class="project__lede">Data infrastructure for 172 stock symbols. Live Alpha Vantage data and historical files from AWS S3 flow through scheduled Airflow workflows into a MySQL star schema, then into forecasts and a dashboard.</p>
+            <ul class="project__points">
+              <li>Scheduled <b>Apache Airflow</b> DAGs with retries combine the <b>live API</b> and <b>S3 historical</b> sources.</li>
+              <li>Designed a <b>MySQL star schema</b>: 1 fact table, 2 dimension tables and 1 reporting view.</li>
+              <li><b>42,000+ rows</b> pass <b>7 automated quality checks</b>, and idempotent upserts keep it at <b>zero duplicates</b> across repeated runs.</li>
+              <li>Time-series forecasting shown in a <b>Streamlit + Plotly</b> dashboard.</li>
+            </ul>
+            <ul class="chips mono" aria-label="Tech used">
+              <li>Python</li><li>Airflow</li><li>AWS S3</li><li>MySQL</li><li>Docker</li><li>scikit-learn</li><li>Streamlit</li><li>Plotly</li>
+            </ul>
+            <div class="project__links">
+              <button class="btn btn--dark dag__run" type="button">▶ Trigger a DAG run</button>
+            </div>
+          </div>
+
+          <div class="project__demo">
+            <div class="win dag" aria-label="Animated Airflow-style DAG">
+              <div class="win__bar"><i></i><i></i><i></i><span class="mono">airflow / dags / stock_etl</span><span class="dag__state mono">idle</span></div>
+              <svg class="dag__svg" viewBox="0 0 560 330" role="img" aria-label="Pipeline: Alpha Vantage API and S3 historical feed into extract, validate, transform, load to MySQL star schema, forecast, and dashboard.">
+                <defs>
+                  <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" class="dag__arrowhead" /></marker>
+                </defs>
+                <text class="dag__note mono" x="540" y="40" text-anchor="end">schedule=@daily · retries=3</text>
+                <text class="dag__note mono" x="540" y="58" text-anchor="end">upsert=idempotent</text>
+                <g class="dag__edges">
+                  <path data-step="1" d="M120 70 C142 70 138 165 157 165" marker-end="url(#arrow)" />
+                  <path data-step="1" d="M120 260 C142 260 138 165 157 165" marker-end="url(#arrow)" />
+                  <path data-step="2" d="M260 165 L297 165" marker-end="url(#arrow)" />
+                  <path data-step="3" d="M400 165 L437 165" marker-end="url(#arrow)" />
+                  <path data-step="4" d="M490 187 L490 235" marker-end="url(#arrow)" />
+                  <path data-step="5" d="M440 260 L403 260" marker-end="url(#arrow)" />
+                  <path data-step="6" d="M300 260 L263 260" marker-end="url(#arrow)" />
+                </g>
+                <g class="dag__nodes mono">
+                  <g class="node" data-step="0" transform="translate(20 48)"><rect width="100" height="44" rx="8"/><text x="50" y="20">alpha_vantage</text><text x="50" y="34" class="sub">live api</text></g>
+                  <g class="node" data-step="0" transform="translate(20 238)"><rect width="100" height="44" rx="8"/><text x="50" y="20">s3_history</text><text x="50" y="34" class="sub">172 symbols</text></g>
+                  <g class="node" data-step="1" transform="translate(160 143)"><rect width="100" height="44" rx="8"/><text x="50" y="20">extract</text><text x="50" y="34" class="sub">api + s3</text></g>
+                  <g class="node" data-step="2" transform="translate(300 143)"><rect width="100" height="44" rx="8"/><text x="50" y="20">validate</text><text x="50" y="34" class="sub">7 dq checks</text></g>
+                  <g class="node" data-step="3" transform="translate(440 143)"><rect width="100" height="44" rx="8"/><text x="50" y="20">transform</text><text x="50" y="34" class="sub">clean · dedupe</text></g>
+                  <g class="node" data-step="4" transform="translate(440 238)"><rect width="100" height="44" rx="8"/><text x="50" y="20">load_mysql</text><text x="50" y="34" class="sub">star schema</text></g>
+                  <g class="node" data-step="5" transform="translate(300 238)"><rect width="100" height="44" rx="8"/><text x="50" y="20">forecast</text><text x="50" y="34" class="sub">time series</text></g>
+                  <g class="node" data-step="6" transform="translate(160 238)"><rect width="100" height="44" rx="8"/><text x="50" y="20">dashboard</text><text x="50" y="34" class="sub">streamlit</text></g>
+                </g>
+                <g class="dag__packets"></g>
+              </svg>
+              <div class="dag__log mono" aria-live="polite"><span class="dim">$</span> waiting for trigger…</div>
+            </div>
+            <p class="hint mono">▶ runs automatically when it scrolls into view</p>
+          </div>
+        </article>
+
+        <!-- More projects -->
+        <div class="more reveal">
+          <p class="more__label mono">more from the lab</p>
+          <div class="more__grid">
+            <a class="mini" href="https://github.com/loksainadh123" target="_blank" rel="noopener">
+              <span class="mini__tag mono">AI · RAG</span>
+              <h4>SupplyMind AI</h4>
+              <p>A RAG assistant that answers plain-English questions over supplier scorecards, audits, NCRs and procurement data, with source citations.</p>
+              <span class="mini__stack mono">Python · Claude API · RAG</span>
+              <span class="mini__arrow" aria-hidden="true">↗</span>
+            </a>
+            <a class="mini" href="https://github.com/loksainadh123" target="_blank" rel="noopener">
+              <span class="mini__tag mono">Data · Analytics</span>
+              <h4>NYPD Arrest Data Analysis</h4>
+              <p>Cleaned, queried and analyzed 168,825 arrest records to surface trends and disparities, presented through interactive Tableau dashboards.</p>
+              <span class="mini__stack mono">Python · SQL · Tableau</span>
+              <span class="mini__arrow" aria-hidden="true">↗</span>
+            </a>
+            <div class="mini mini--static">
+              <span class="mini__tag mono">Team · Web App</span>
+              <h4>Online Learning Management System</h4>
+              <p>Built with a five-person team: an online learning platform supporting the full teaching and learning workflow.</p>
+              <span class="mini__stack mono">Team of 5 · Full-stack</span>
+            </div>
+          </div>
         </div>
+      </div>
     </section>
 
-    <footer>
-        <div class="container">
-            <p>&copy; 2025 Lok Sainadh Kesana. All rights reserved.</p>
-            <p>Designed with care and attention to detail.</p>
+    <!-- ================= JOURNEY (git log) ================= -->
+    <section class="band band--dark section" id="journey">
+      <div class="wrap">
+        <header class="sec-head reveal">
+          <p class="sec-head__idx mono">02 — journey</p>
+          <h2 class="sec-head__title"><span class="mono">$ git log --career</span><br /><span class="dim">Every commit got me here.</span></h2>
+        </header>
+
+        <ol class="gitlog">
+          <li class="commit commit--head reveal">
+            <div class="commit__rail"><i class="commit__dot"></i></div>
+            <div class="commit__body">
+              <p class="commit__meta mono"><span class="hash">f00d1e5</span> <span class="ref ref--head">HEAD → main</span> <span class="ref">origin/open-to-work</span> <span class="dim">Jan 2027</span></p>
+              <h3 class="commit__msg">feat: join <em>your team</em> as a full-time engineer</h3>
+              <p class="commit__desc">Looking for Software Engineer, Data Engineer or Web Developer roles. Available right after I graduate in December 2026.</p>
+              <a class="commit__cta mono" href="#contact">git merge lok → your-team ↗</a>
+            </div>
+          </li>
+
+          <li class="commit reveal">
+            <div class="commit__rail"><i class="commit__dot"></i></div>
+            <div class="commit__body">
+              <p class="commit__meta mono"><span class="hash">3b7e9a2</span> <span class="ref">edu</span> <span class="dim">Jan 2025 — Dec 2026</span></p>
+              <h3 class="commit__msg">feat(edu): MS Information Systems @ Northeastern University</h3>
+              <p class="commit__desc">Boston, MA · GPA 3.78 / 4.0. Built full-stack apps, data pipelines and AI tools across coursework and projects.</p>
+            </div>
+          </li>
+
+          <li class="commit reveal">
+            <div class="commit__rail"><i class="commit__dot"></i></div>
+            <div class="commit__body">
+              <p class="commit__meta mono"><span class="hash">9c41d0e</span> <span class="ref">work</span> <span class="dim">Aug 2023 — Dec 2024 · Hyderabad</span></p>
+              <h3 class="commit__msg">feat(work): Software Engineer (Level 1) @ Power Mech Projects Limited</h3>
+              <details class="commit__details" open>
+                <summary class="mono">+ 5 changes</summary>
+                <ul>
+                  <li><span class="add mono">+</span> Built and maintained a WordPress <b>careers product</b> processing an estimated <b>500+ applications a month</b> (PHP, JavaScript, jQuery, HTML, CSS).</li>
+                  <li><span class="add mono">+</span> Built <b>responsive UIs</b> for mobile, tablet and desktop, with required-field, email, phone and message validation and clear success and error feedback.</li>
+                  <li><span class="add mono">+</span> Validated <b>3 resume formats</b> (PDF, DOC, DOCX) with size limits and spam protection, and automated delivery to HR via <b>SMTP</b>.</li>
+                  <li><span class="add mono">+</span> Turned requirements from HR and a <b>3-person engineering team</b> into fields, routing, layout and copy, and trained users on the system.</li>
+                  <li><span class="add mono">+</span> Debugged issues, shipped change requests through <b>staging testing</b>, maintained plugins and improved images and SEO metadata.</li>
+                </ul>
+              </details>
+            </div>
+          </li>
+
+          <li class="commit reveal">
+            <div class="commit__rail"><i class="commit__dot"></i></div>
+            <div class="commit__body">
+              <p class="commit__meta mono"><span class="hash">51aa8f3</span> <span class="ref">work</span> <span class="dim">May 2022 — Aug 2022 · Hyderabad</span></p>
+              <h3 class="commit__msg">feat(work): Data Analyst Intern @ SR Constructions</h3>
+              <details class="commit__details">
+                <summary class="mono">+ 1 change</summary>
+                <ul>
+                  <li><span class="add mono">+</span> Analyzed an estimated <b>50+ customer inquiries a week</b> and wrote concise business summaries that helped the owner prioritize prospects and follow-ups.</li>
+                </ul>
+              </details>
+            </div>
+          </li>
+
+          <li class="commit reveal">
+            <div class="commit__rail"><i class="commit__dot"></i></div>
+            <div class="commit__body">
+              <p class="commit__meta mono"><span class="hash">0e1c2a7</span> <span class="ref">init</span> <span class="dim">2020 — 2024 · Hyderabad</span></p>
+              <h3 class="commit__msg">init: B.Tech Electronics &amp; Computer Engineering @ Mahindra University</h3>
+              <p class="commit__desc">Where it started: OOP, data structures, software engineering and cloud computing.</p>
+            </div>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- ================= STACK ================= -->
+    <section class="section" id="stack">
+      <div class="wrap">
+        <header class="sec-head reveal">
+          <p class="sec-head__idx mono">03 — stack</p>
+          <h2 class="sec-head__title">The toolbox,<br /><span class="dim">written the way I'd write it.</span></h2>
+        </header>
+
+        <div class="files">
+          <figure class="win file reveal">
+            <div class="win__bar"><i></i><i></i><i></i><span class="mono">languages.ts</span></div>
+<pre class="code mono"><code><span class="k">export const</span> <span class="v">languages</span> = [
+  <span class="s">"Java"</span>, <span class="s">"Python"</span>, <span class="s">"JavaScript"</span>,
+  <span class="s">"TypeScript"</span>, <span class="s">"SQL"</span>, <span class="s">"PHP"</span>,
+  <span class="s">"HTML"</span>, <span class="s">"CSS"</span>,
+] <span class="k">as const</span>;</code></pre>
+          </figure>
+
+          <figure class="win file reveal">
+            <div class="win__bar"><i></i><i></i><i></i><span class="mono">engineering.tsx</span></div>
+<pre class="code mono"><code>&lt;<span class="v">Engineer</span>
+  <span class="k">frontend</span>={[<span class="s">"React"</span>, <span class="s">"Next.js"</span>]}
+  <span class="k">backend</span>={[<span class="s">"Node.js"</span>, <span class="s">"FastAPI"</span>, <span class="s">"Prisma"</span>]}
+  <span class="k">apis</span>=<span class="s">"REST · API development"</span>
+  <span class="k">thinks</span>=<span class="s">"system design"</span>
+/&gt;</code></pre>
+          </figure>
+
+          <figure class="win file reveal">
+            <div class="win__bar"><i></i><i></i><i></i><span class="mono">data.sql</span></div>
+<pre class="code mono"><code><span class="k">SELECT</span> skill <span class="k">FROM</span> lok.data_stack
+<span class="k">WHERE</span> skill <span class="k">IN</span> (
+  <span class="s">'MySQL'</span>, <span class="s">'SQLite'</span>, <span class="s">'MongoDB'</span>,
+  <span class="s">'pandas'</span>, <span class="s">'NumPy'</span>, <span class="s">'scikit-learn'</span>,
+  <span class="s">'ETL'</span>, <span class="s">'Data Modeling'</span>
+); <span class="c">-- 8 rows ✓</span></code></pre>
+          </figure>
+
+          <figure class="win file reveal">
+            <div class="win__bar"><i></i><i></i><i></i><span class="mono">tools.yml</span></div>
+<pre class="code mono"><code><span class="k">tools:</span>
+  - <span class="s">git</span> <span class="c"># + GitHub</span>
+  - <span class="s">docker</span>
+  - <span class="s">aws-s3</span>
+  - <span class="s">apache-airflow</span>
+  - <span class="s">claude-api</span>
+  - <span class="s">streamlit</span> / <span class="s">plotly</span></code></pre>
+          </figure>
         </div>
-    </footer>
+      </div>
+    </section>
+
+    <!-- ================= SHELL ================= -->
+    <section class="band band--dark section" id="shell">
+      <div class="wrap shell-wrap">
+        <header class="sec-head reveal">
+          <p class="sec-head__idx mono">04 — shell</p>
+          <h2 class="sec-head__title">Prefer the terminal?<br /><span class="dim">Ask me anything. Type <span class="mono">help</span>.</span></h2>
+        </header>
+
+        <div class="win term reveal">
+          <div class="win__bar"><i></i><i></i><i></i><span class="mono">guest@lok-portfolio: ~</span></div>
+          <div class="term__out mono" aria-live="polite"></div>
+          <form class="term__form mono" autocomplete="off">
+            <label for="term-input"><span class="accent-ink">guest@lok</span>:<span class="dim">~</span>$</label>
+            <input id="term-input" class="term__input" type="text" spellcheck="false" autocapitalize="off" aria-label="Terminal command" />
+          </form>
+          <div class="term__chips mono" aria-label="Quick commands">
+            <button type="button" data-cmd="whoami">whoami</button>
+            <button type="button" data-cmd="projects">projects</button>
+            <button type="button" data-cmd="skills">skills</button>
+            <button type="button" data-cmd="contact">contact</button>
+            <button type="button" data-cmd="sudo hire lok">sudo hire lok</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= DESIGN STRIP ================= -->
+    <section class="section design" aria-label="Design background">
+      <div class="wrap">
+        <header class="sec-head sec-head--row reveal">
+          <div>
+            <p class="sec-head__idx mono">bonus — I also design</p>
+            <h2 class="sec-head__title">Engineer with a<br /><span class="dim">designer's eye.</span></h2>
+          </div>
+          <p class="design__note">Before I wrote production code I designed it: a <b>99-screen</b> travel-booking concept and a <b>70+ screen</b> two-sided home-services app in Figma. So the interfaces I build come with real UX thinking. <span class="dim">Hover to bring them to life.</span></p>
+        </header>
+      </div>
+      <div class="phones" aria-label="Design work screenshots">
+        <div class="phones__track">
+          <figure class="phone"><img src="assets/design/kayak1.png" alt="Travel booking concept — flight search screen" loading="lazy" /></figure>
+          <figure class="phone"><img src="assets/design/serveease1.png" alt="ServeEase — service selection screen" loading="lazy" /></figure>
+          <figure class="phone"><img src="assets/design/kayak2.png" alt="Travel booking concept — booking flow" loading="lazy" /></figure>
+          <figure class="phone"><img src="assets/design/serveease2.png" alt="ServeEase — live tracking screen" loading="lazy" /></figure>
+          <figure class="phone"><img src="assets/design/kayak3.png" alt="Travel booking concept — trip management" loading="lazy" /></figure>
+          <figure class="phone"><img src="assets/design/serveease3.png" alt="ServeEase — provider dashboard" loading="lazy" /></figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= CONTACT ================= -->
+    <section class="band band--dark contact" id="contact">
+      <div class="wrap">
+        <p class="sec-head__idx mono reveal">05 — contact</p>
+        <h2 class="contact__big reveal">Let's build<br /><span class="hero__outline hero__outline--dark">something.</span></h2>
+        <div class="contact__grid reveal">
+          <button class="contact__item copy" data-copy="kesanaloksainadh@gmail.com" type="button">
+            <span class="mono dim">email · click to copy</span>
+            <span class="contact__val copy__label">kesanaloksainadh@gmail.com</span>
+          </button>
+          <a class="contact__item" href="https://www.linkedin.com/in/lok-sainadh-kesana-842210277/" target="_blank" rel="noopener">
+            <span class="mono dim">linkedin</span><span class="contact__val">lok-sainadh-kesana ↗</span>
+          </a>
+          <a class="contact__item" href="https://github.com/loksainadh123" target="_blank" rel="noopener">
+            <span class="mono dim">github</span><span class="contact__val">loksainadh123 ↗</span>
+          </a>
+          <a class="contact__item" href="assets/Lok_Sainadh_Kesana_Resume.pdf" target="_blank" rel="noopener">
+            <span class="mono dim">resume</span><span class="contact__val">download PDF ↗</span>
+          </a>
+        </div>
+      </div>
+      <footer class="foot wrap mono">
+        <span>© 2026 Lok Sainadh Kesana</span>
+        <span class="dim">hand-built: HTML · CSS · vanilla JS · zero frameworks · zero templates</span>
+        <a href="#top">back to top ↑</a>
+      </footer>
+    </section>
+  </main>
+
+  <div class="toast mono" role="status" aria-live="polite"></div>
+
+  <script src="js/cursor.js" defer></script>
+  <script src="js/hero.js" defer></script>
+  <script src="js/projects.js" defer></script>
+  <script src="js/terminal.js" defer></script>
+  <script src="js/main.js" defer></script>
 </body>
 </html>
